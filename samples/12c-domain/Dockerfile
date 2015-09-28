@@ -7,11 +7,11 @@
 
 # Pull base image
 # ---------------
-FROM jeqo/oracle-soa-12c:12.1.3-dev
+FROM voreiche/oracle-soa-12c:12.1.3-dev-vr
 
 # Maintainer
 # ----------
-MAINTAINER Jorge Quilcate <quilcate.jorge@gmail.com>
+MAINTAINER volker Reichel <volker.reichel@freenet.de>
 
 # WLS Configuration
 # -------------------------------
@@ -20,7 +20,8 @@ ENV ADMIN_PASSWORD welcome1
 ENV ADMIN_PORT 7001
 ENV OSB_DEBUG_PORT 7453
 ENV SOA_DEBUG_PORT 5004
-ENV USER_MEM_ARGS -Xms1024m -Xmx2058m -XX:MaxPermSize=1024m
+ENV USER_MEM_ARGS -Xms1024m -Xmx3058m -XX:MaxPermSize=1024m
+ENV CONFIG_JVM_ARGS=-Djava.security.egd=file:/dev/./urandom
 
 # Add files required to build this image
 COPY container-scripts/* /u01/oracle/
